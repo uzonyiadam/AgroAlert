@@ -1,8 +1,8 @@
-name: Agri Alert
+name: Daily Agri Alert
 
 on:
   schedule:
-    - cron: "0 */3 * * *"
+    - cron: "0 6 * * *"   # every day at 06:00 UTC
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install axios
+        run: npm install axios nodemailer
 
-      - name: Run script
+      - name: Run check
         run: node check.js
